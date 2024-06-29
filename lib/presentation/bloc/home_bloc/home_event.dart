@@ -1,0 +1,3 @@
+class HomeEvent {
+  const HomeEvent();
+}
