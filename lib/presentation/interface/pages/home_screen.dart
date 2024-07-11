@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherify_app/presentation/interface/widgets/home_screen_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routePath = "/home-screen";
@@ -13,10 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home Screen"),
+        title: SearchBarHome(),
       ),
       body: const Column(
-        children: [Text('Column')],
+        children: [],
       ),
     );
   }

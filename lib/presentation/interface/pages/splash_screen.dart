@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:weatherify_app/presentation/constants/widget_colors.dart';
 import 'package:weatherify_app/presentation/interface/pages/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // Delay on Splash Screen
     Future.delayed(
       const Duration(seconds: 2),
-      () => {context.go(HomeScreen.routePath)},
+      () => context.go(HomeScreen.routePath),
     );
     super.initState();
   }
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: WidgetColors.primary,
       body: Center(
         child: Text(
           'Weatherify.',
