@@ -10,11 +10,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var searchLocationController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SearchBarHome(),
+        title: SearchBarHome(
+          textController: searchLocationController,
+        ),
       ),
       body: const Column(
         children: [],
