@@ -6,9 +6,15 @@ import 'package:weatherify_app/presentation/constants/widget_constants.dart';
 
 class SearchBarHome extends StatefulWidget {
   TextEditingController textController;
+  bool onSearch = false;
+  Function onTapIcon;
+  Function(String) onChangeSearch;
   SearchBarHome({
     super.key,
     required this.textController,
+    required this.onSearch,
+    required this.onTapIcon,
+    required this.onChangeSearch,
   });
 
   @override
@@ -25,12 +31,22 @@ class _SearchBarHomeState extends State<SearchBarHome> {
       ),
       width: double.maxFinite,
       child: TextField(
+          onChanged: (value) => widget.onChangeSearch(value),
           controller: widget.textController,
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 15.0),
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 12,
+            ),
             border: InputBorder.none,
-            hintText: "Location",
+            hintText: "Search",
             hoverColor: WidgetColors.secondary,
+            suffixIcon: widget.onSearch
+                ? GestureDetector(
+                    child: const Icon(Icons.close),
+                    onTap: () => widget.onTapIcon(),
+                  )
+                : const Icon(Icons.location_on),
           )),
     );
   }

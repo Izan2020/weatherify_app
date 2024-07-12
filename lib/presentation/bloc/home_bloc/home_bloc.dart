@@ -3,5 +3,9 @@ import 'package:weatherify_app/presentation/bloc/home_bloc/home_event.dart';
 import 'package:weatherify_app/presentation/bloc/home_bloc/home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc() : super(HomeState());
+  HomeBloc() : super(OnDefault()) {
+    on<OnSwitchHomeEvent>(
+      (event, emit) => emit(event.homeState),
+    );
+  }
 }

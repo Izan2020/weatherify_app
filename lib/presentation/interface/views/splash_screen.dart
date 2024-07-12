@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weatherify_app/presentation/constants/widget_colors.dart';
-import 'package:weatherify_app/presentation/interface/pages/home_screen.dart';
+import 'package:weatherify_app/presentation/interface/views/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static String routePath = "/splash-screen";

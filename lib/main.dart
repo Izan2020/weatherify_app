@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weatherify_app/presentation/bloc/home_bloc/home_bloc.dart';
-import 'package:weatherify_app/presentation/interface/pages/home_screen.dart';
-import 'package:weatherify_app/presentation/interface/pages/splash_screen.dart';
+import 'package:weatherify_app/presentation/interface/views/home_screen.dart';
+import 'package:weatherify_app/presentation/interface/views/splash_screen.dart';
 // Dependencies Injection
 import 'injection.dart' as di;
 

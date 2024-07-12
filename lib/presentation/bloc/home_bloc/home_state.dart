@@ -4,3 +4,7 @@ class HomeState extends Equatable {
   @override
   List<Object?> get props => throw UnimplementedError();
 }
+
+class OnSearchLocation extends HomeState {}
+
+class OnDefault extends HomeState {}
