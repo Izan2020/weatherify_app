@@ -1,4 +1,4 @@
-import 'package:weatherify_app/presentation/bloc/home_bloc/home_state.dart';
+import 'package:weatherify_app/presentation/bloc/home/home_state.dart';
 
 class HomeEvent {
   const HomeEvent();

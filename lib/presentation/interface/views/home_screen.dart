@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weatherify_app/presentation/bloc/home_bloc/home_bloc.dart';
-import 'package:weatherify_app/presentation/bloc/home_bloc/home_event.dart';
-import 'package:weatherify_app/presentation/bloc/home_bloc/home_state.dart';
+import 'package:weatherify_app/presentation/bloc/home/home_bloc.dart';
+import 'package:weatherify_app/presentation/bloc/home/home_event.dart';
+import 'package:weatherify_app/presentation/bloc/home/home_state.dart';
 import 'package:weatherify_app/presentation/interface/fragments/search_page.dart';
 import 'package:weatherify_app/presentation/interface/fragments/weather_page.dart';
 import 'package:weatherify_app/presentation/interface/widgets/home_screen_widgets.dart';

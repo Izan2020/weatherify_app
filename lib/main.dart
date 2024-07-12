@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weatherify_app/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:weatherify_app/presentation/bloc/home/home_bloc.dart';
 import 'package:weatherify_app/presentation/interface/views/home_screen.dart';
 import 'package:weatherify_app/presentation/interface/views/splash_screen.dart';
 // Dependencies Injection
@@ -23,7 +23,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -32,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: "Flutter Demo",
+        title: "Weatherify Dev",
         routerConfig: GoRouter(
           initialLocation: SplashScreen.routePath,
           routes: [
