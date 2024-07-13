@@ -18,5 +18,6 @@ class SearchLocationBloc
         (data) => emit(SuccessSLS(data)),
       );
     }, transformer: debounce(const Duration(milliseconds: 500)));
+    on<OnClearState>((event, emit) => emit(LoadingSLS()));
   }
 }

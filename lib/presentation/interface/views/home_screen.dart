@@ -29,30 +29,33 @@ class _HomeScreenState extends State<HomeScreen> {
             return SearchBarHome(
               textController: searchLocationController,
               onSearch: state is OnDefault ? false : true,
-              onTapIcon: () {
-                context.read<HomeBloc>().add(OnSwitchHomeEvent(OnDefault()));
-                searchLocationController.text = "";
-              },
+              onTapIcon: () => onCancelSearch(),
               onChangeSearch: (data) => onChangeSearch(data),
             );
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: BlocBuilder<HomeBloc, HomeState>(
-          builder: (build, state) {
-            switch (state) {
-              case OnDefault():
-                return const WeatherPage();
-              case OnSearchLocation():
-                return const SearchLocationPage();
-              default:
-                return const Text('Page Not Found');
-            }
-          },
-        ),
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (build, state) {
+          switch (state) {
+            case OnDefault():
+              return const WeatherPage();
+            case OnSearchLocation():
+              return const SearchLocationPage();
+            default:
+              return const Text('Page Not Found');
+          }
+        },
       ),
     );
+  }
+
+  void onCancelSearch() {
+    final homeBloc = context.read<HomeBloc>();
+    final searchLocationBloc = context.read<SearchLocationBloc>();
+    homeBloc.add(OnSwitchHomeEvent(OnDefault()));
+    searchLocationBloc.add(OnClearState());
+    searchLocationController.text = "";
   }
 
   void onChangeSearch(String value) {

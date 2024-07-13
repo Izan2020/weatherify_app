@@ -1,6 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weatherify_app/data/datasources/helper/request_helper.dart';
+import 'package:weatherify_app/data/datasources/helper/utils/position_locator.dart';
 import 'package:weatherify_app/data/datasources/local_data_source.dart';
 import 'package:weatherify_app/data/datasources/remote_data_source.dart';
 import 'package:weatherify_app/data/repository_implementation.dart';
@@ -15,9 +16,11 @@ Future<void> initializeDependencies() async {
   // Repository: Others
   inject.registerFactory(() => RequestHelper());
   inject.registerFactory(() => DotEnv());
+  inject.registerFactory(() => PositionLocator());
 
   // Remote Datasource: Register Factory
   inject.registerFactory(() => RemoteDataSource(
+        positionLocator: inject(),
         requestHelper: inject(),
         dotEnv: inject(),
       ));

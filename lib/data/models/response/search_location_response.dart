@@ -20,14 +20,14 @@ class SearchLocationResponse {
 @JsonSerializable()
 class ItemLocationSLR {
   final String title;
-  final PositionsSLR positions;
+  final PositionsSLR position;
   final String id;
-  final String politicalView;
+  final String language;
   ItemLocationSLR(
     this.title,
-    this.positions,
+    this.position,
     this.id,
-    this.politicalView,
+    this.language,
   );
 
   factory ItemLocationSLR.fromJson(Map<String, dynamic> json) =>
@@ -36,8 +36,8 @@ class ItemLocationSLR {
   NearestLocation toEntity() {
     return NearestLocation(
       title,
-      positions.lng,
-      positions.lat,
+      position.lng,
+      position.lat,
     );
   }
 }

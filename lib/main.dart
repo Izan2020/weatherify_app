@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weatherify_app/presentation/bloc/home/home_bloc.dart';
 import 'package:weatherify_app/presentation/bloc/home/search_location/search_location_bloc.dart';
@@ -12,6 +13,7 @@ import 'injection.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Geolocator.requestPermission();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   await dotenv.load(fileName: ".env");
   await di.initializeDependencies();

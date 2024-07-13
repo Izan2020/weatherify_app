@@ -23,17 +23,17 @@ Map<String, dynamic> _$SearchLocationResponseToJson(
 ItemLocationSLR _$ItemLocationSLRFromJson(Map<String, dynamic> json) =>
     ItemLocationSLR(
       json['title'] as String,
-      PositionsSLR.fromJson(json['positions'] as Map<String, dynamic>),
+      PositionsSLR.fromJson(json['position'] as Map<String, dynamic>),
       json['id'] as String,
-      json['politicalView'] as String,
+      json['language'] as String,
     );
 
 Map<String, dynamic> _$ItemLocationSLRToJson(ItemLocationSLR instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'positions': instance.positions,
+      'position': instance.position,
       'id': instance.id,
-      'politicalView': instance.politicalView,
+      'language': instance.language,
     };
 
 PositionsSLR _$PositionsSLRFromJson(Map<String, dynamic> json) => PositionsSLR(

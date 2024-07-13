@@ -6,3 +6,5 @@ class OnGetLocations extends SearchLocationEvent {
   final String searchQuery;
   const OnGetLocations(this.searchQuery);
 }
+
+class OnClearState extends SearchLocationEvent {}
