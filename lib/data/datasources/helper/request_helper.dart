@@ -7,7 +7,7 @@ class RequestHelper extends IOClient {
   Future<http.Response> get(
     Uri url, {
     Map<String, String>? headers,
-    String? certifications,
+    String certifications = "",
   }) async {
     return await SSLCertifiedClient.initializeIOClient(certifications)
         .then((value) => value.get(url));

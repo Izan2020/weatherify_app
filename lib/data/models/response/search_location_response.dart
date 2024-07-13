@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:weatherify_app/domain/entities/locations.dart';
+import 'package:weatherify_app/domain/entities/nearest_locations.dart';
 
 part 'search_location_response.g.dart';
 
@@ -11,9 +11,9 @@ class SearchLocationResponse {
   factory SearchLocationResponse.fromJson(Map<String, dynamic> json) =>
       _$SearchLocationResponseFromJson(json);
 
-  Locations toEntity() {
+  NearestLocations toEntity() {
     final itemz = items.map((item) => item.toEntity()).toList();
-    return Locations(itemz);
+    return NearestLocations(itemz);
   }
 }
 
@@ -33,8 +33,8 @@ class ItemLocationSLR {
   factory ItemLocationSLR.fromJson(Map<String, dynamic> json) =>
       _$ItemLocationSLRFromJson(json);
 
-  Location toEntity() {
-    return Location(
+  NearestLocation toEntity() {
+    return NearestLocation(
       title,
       positions.lng,
       positions.lat,

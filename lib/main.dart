@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weatherify_app/presentation/bloc/home/home_bloc.dart';
+import 'package:weatherify_app/presentation/bloc/home/search_location/search_location_bloc.dart';
 import 'package:weatherify_app/presentation/interface/views/home_screen.dart';
 import 'package:weatherify_app/presentation/interface/views/splash_screen.dart';
 // Dependencies Injection
@@ -30,6 +31,8 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(create: (_) => di.inject<HomeBloc>()),
+        BlocProvider<SearchLocationBloc>(
+            create: (_) => di.inject<SearchLocationBloc>()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

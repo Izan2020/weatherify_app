@@ -19,11 +19,12 @@ class RemoteDataSource {
   final locationApiKey = dotenv.env['LOCATION_API_KEY'];
 
   Future<SearchLocationResponse> searchLocations(String query) async {
+    Uri url = Uri.parse('$locationUrl/browse?q=$query&apiKey=$locationApiKey');
     final response = await requestHelper.get(
-      Uri.parse('$locationUrl`/geocode?q=$query'),
+      url,
       certifications: Certifications.locationApi,
-      headers: {"Authorization": "Bearer $locationApiKey"},
     );
+    print('Url : $url\nApiKey : $locationApiKey');
     if (response.statusCode != 200) {
       throw ServerFailure(
         message: response.reasonPhrase,

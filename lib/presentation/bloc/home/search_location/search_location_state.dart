@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:weatherify_app/domain/entities/locations.dart';
+import 'package:weatherify_app/domain/entities/nearest_locations.dart';
 
 class SearchLocationState extends Equatable {
   @override
@@ -9,7 +9,7 @@ class SearchLocationState extends Equatable {
 class LoadingSLS extends SearchLocationState {}
 
 class SuccessSLS extends SearchLocationState {
-  Locations data;
+  NearestLocations data;
   SuccessSLS(this.data);
 }
 

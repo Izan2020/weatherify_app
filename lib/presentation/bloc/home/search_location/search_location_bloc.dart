@@ -14,7 +14,7 @@ class SearchLocationBloc
     on<OnGetLocations>((event, emit) async {
       final result = await getSearchLocations.execute(event.searchQuery);
       result.fold(
-        (failure) => emit(ErrorSLS(failure.message)),
+        (failure) => emit(ErrorSLS('${failure.message}')),
         (data) => emit(SuccessSLS(data)),
       );
     }, transformer: debounce(const Duration(milliseconds: 500)));

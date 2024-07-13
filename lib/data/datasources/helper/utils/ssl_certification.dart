@@ -3,9 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:http/io_client.dart';
 
 class SSLCertifiedClient {
-  static Future<IOClient> initializeIOClient(String? certifications) async {
-    final ByteData sslCert =
-        await rootBundle.load('assets/cert/themoviedb.org.cer');
+  static Future<IOClient> initializeIOClient(String certifications) async {
+    final ByteData sslCert = await rootBundle.load(certifications);
 
     SecurityContext securityContext = SecurityContext(withTrustedRoots: false);
     securityContext.setTrustedCertificatesBytes(sslCert.buffer.asInt8List());

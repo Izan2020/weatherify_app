@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherify_app/presentation/bloc/home/home_bloc.dart';
 import 'package:weatherify_app/presentation/bloc/home/home_event.dart';
 import 'package:weatherify_app/presentation/bloc/home/home_state.dart';
+import 'package:weatherify_app/presentation/bloc/home/search_location/search_location_bloc.dart';
+import 'package:weatherify_app/presentation/bloc/home/search_location/search_location_event.dart';
 import 'package:weatherify_app/presentation/interface/fragments/search_page.dart';
 import 'package:weatherify_app/presentation/interface/fragments/weather_page.dart';
 import 'package:weatherify_app/presentation/interface/widgets/home_screen_widgets.dart';
@@ -55,8 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void onChangeSearch(String value) {
     final homeBloc = context.read<HomeBloc>();
+    final searchLocationBloc = context.read<SearchLocationBloc>();
     homeBloc.add(OnSwitchHomeEvent(
       value.isNotEmpty ? OnSearchLocation() : OnDefault(),
     ));
+
+    searchLocationBloc.add(OnGetLocations(value));
   }
 }

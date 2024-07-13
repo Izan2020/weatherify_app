@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:weatherify_app/data/datasources/local_data_source.dart';
 import 'package:weatherify_app/data/datasources/remote_data_source.dart';
 import 'package:weatherify_app/data/models/failure.dart';
-import 'package:weatherify_app/domain/entities/locations.dart';
+import 'package:weatherify_app/domain/entities/nearest_locations.dart';
 import 'package:weatherify_app/domain/repository.dart';
 
 class RepositoryImplementation implements Repository {
@@ -14,7 +14,8 @@ class RepositoryImplementation implements Repository {
   });
 
   @override
-  Future<Either<Failure, Locations>> fetchSearchLocations(String query) async {
+  Future<Either<Failure, NearestLocations>> fetchSearchLocations(
+      String query) async {
     try {
       final response = await remoteDataSource.searchLocations(query);
       return Right(response.toEntity());
