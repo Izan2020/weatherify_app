@@ -14,6 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // Delay on Splash Screen
+    if (!mounted) return;
     Future.delayed(
       const Duration(seconds: 2),
       () => context.go(HomeScreen.routePath),

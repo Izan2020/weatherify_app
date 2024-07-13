@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weatherify_app/presentation/bloc/home/home_bloc.dart';
 import 'package:weatherify_app/presentation/interface/views/home_screen.dart';
@@ -11,6 +12,7 @@ import 'injection.dart' as di;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+  await dotenv.load(fileName: ".env");
   await di.initializeDependencies();
   runApp(const MyApp());
 }

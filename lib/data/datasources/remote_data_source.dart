@@ -1,18 +1,36 @@
+import 'dart:convert';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weatherify_app/data/datasources/helper/request_helper.dart';
-import 'package:weatherify_app/data/models/exception.dart';
+import 'package:weatherify_app/data/models/certifications.dart';
+import 'package:weatherify_app/data/models/failure.dart';
+import 'package:weatherify_app/data/models/response/search_location_response.dart';
 
 class RemoteDataSource {
   final RequestHelper requestHelper;
-  RemoteDataSource(this.requestHelper);
+  final DotEnv dotEnv;
+  RemoteDataSource({
+    required this.requestHelper,
+    required this.dotEnv,
+  });
 
-  Future<List<String>> searchLocations() async {
-    final response = await requestHelper.get(Uri.parse(""));
+  // Base URL
+  final locationUrl = dotenv.env['LOCATION_BASE_URL'];
+  final locationApiKey = dotenv.env['LOCATION_API_KEY'];
+
+  Future<SearchLocationResponse> searchLocations(String query) async {
+    final response = await requestHelper.get(
+      Uri.parse('$locationUrl`/geocode?q=$query'),
+      certifications: Certifications.locationApi,
+      headers: {"Authorization": "Bearer $locationApiKey"},
+    );
     if (response.statusCode != 200) {
-      throw ServerException(
-        response.reasonPhrase,
-        response.statusCode,
+      throw ServerFailure(
+        message: response.reasonPhrase,
+        statusCode: response.statusCode,
       );
     }
-    return ["", ""];
+    final responseBody = jsonDecode(response.body);
+    return SearchLocationResponse.fromJson(responseBody);
   }
 }
